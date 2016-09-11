@@ -1,0 +1,54 @@
+@import "trestle/support";
+
+.searchbox {
+  float: left;
+  max-width: 25%;
+  padding: 8px 0;
+
+  .input-group-addon {
+    background: none;
+    border: none;
+    padding-left: 0;
+  }
+
+  .form-control {
+    padding-left: 0;
+
+    background: none;
+    box-shadow: none;
+
+    border: none;
+    border-radius: 0;
+
+    border-bottom: 1px solid #ddd;
+
+    transition: border-color 500ms;
+
+    &:focus {
+      border-color: #555;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: $sidebar-width - 20px;
+    max-width: none;
+
+    padding: 0 12px;
+    background: white;
+    box-shadow: inset 0 1px 1px rgba(black, 0.075);
+    border-radius: 50px;
+
+    .form-control {
+      border-bottom: none;
+    }
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .app-sidebar {
+    padding-top: 40px;
+  }
+}
