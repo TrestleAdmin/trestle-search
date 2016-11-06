@@ -2,11 +2,10 @@ module Trestle
   module Search
     module Controller
       def index
+        super
+
         if admin.searchable? && params[:q].present?
-          self.collection = admin.search(params[:q], params)
-          breadcrumb "Search Results"
-        else
-          super
+          breadcrumb "Search Results", { q: params[:q] }
         end
       end
     end
