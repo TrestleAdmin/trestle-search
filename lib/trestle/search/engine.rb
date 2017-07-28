@@ -1,7 +1,7 @@
 module Trestle
   module Search
     class Engine < ::Rails::Engine
-      config.assets.precompile << "trestle/search.css" << "trestle/search.js"
+      config.assets.precompile << "trestle/search.css"
 
       initializer :extensions do
         Trestle::Resource.singleton_class.send(:prepend, Trestle::Search::Resource)
