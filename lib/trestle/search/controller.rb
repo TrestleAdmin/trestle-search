@@ -5,7 +5,7 @@ module Trestle
         super
 
         if admin.searchable? && params[:q].present?
-          breadcrumb "Search Results", { q: params[:q] }
+          breadcrumb t("admin.search.results", default: "Search Results"), { q: params[:q] }
         end
       end
     end

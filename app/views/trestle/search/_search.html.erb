@@ -3,7 +3,7 @@
     <%= form_tag admin.path, method: :get do %>
       <div class="input-group">
         <span class="input-group-addon"><icon class="fa fa-search"></icon></span>
-        <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search" %>
+        <%= text_field_tag :q, params[:q], class: "form-control", placeholder: t("admin.search.placeholder", default: "Search") %>
       </div>
     <% end %>
   </div>
