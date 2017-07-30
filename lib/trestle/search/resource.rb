@@ -3,12 +3,18 @@ module Trestle
     module Resource
       attr_writer :search
 
-      def collection(params)
-        if searchable?
-          @search.call(params[:q] || "", params)
+      def initialize_collection(params)
+        query_param = params[:q]
+
+        if searchable? && query_param.present?
+          search(query_param, params)
         else
-          super
+          super(params)
         end
+      end
+
+      def search(query, params)
+        instance_exec(query, params, &@search)
       end
 
       def searchable?
