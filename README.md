@@ -23,9 +23,23 @@ Trestle.resource(:articles) do
 end
 ```
 
-The search block accepts one or two parameters; the first is the string value of the search query. The second, optional parameter is the complete `params` hash.
+The search block accepts one or two parameters; the first is the string value of the search query. The second, optional parameter is the full `params` hash.
 
 The search block will be called instead of the default (or custom) `collection` block when the `q` query parameter is present (i.e. when a search query has been entered). It must return a chainable scope.
+
+The original collection block can be called to avoid redefining scopes. For example:
+
+```ruby
+Trestle.resource(:articles) do
+  collection do
+    Article.order(created_at: :desc).includes(:author)
+  end
+
+  search do |q|
+    collection.where("title ILIKE ?", "%#{q}%")
+  end
+end
+```
 
 
 ## License
