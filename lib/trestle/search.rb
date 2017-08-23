@@ -1,5 +1,7 @@
 require "trestle/search/version"
 
+require "trestle"
+
 module Trestle
   module Search
     extend ActiveSupport::Autoload
