@@ -1,5 +1,5 @@
 en:
   admin:
     search:
-      placeholder: Search
-      results: Search Results
+      placeholder: "Search"
+      results: "Search Results"
