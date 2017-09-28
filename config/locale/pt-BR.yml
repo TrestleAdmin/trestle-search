@@ -1,5 +1,5 @@
 pt-BR:
   admin:
     search:
-      placeholder: Pesquisar
-      results: Resultados da Pesquisa
+      placeholder: "Pesquisar"
+      results: "Resultados da Pesquisa"
