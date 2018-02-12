@@ -9,6 +9,10 @@ module Trestle
     autoload :Builder
     autoload :Controller
     autoload :Resource
+
+    autoload_under "adapters" do
+      autoload :SunspotAdapter
+    end
   end
 end
 
