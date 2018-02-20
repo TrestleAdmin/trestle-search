@@ -21,7 +21,7 @@ module Trestle
         end
       end
 
-      def decorate_collection(search)
+      def finalize_collection(search)
         search.execute.results
       end
     end
