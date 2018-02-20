@@ -11,6 +11,7 @@ module Trestle
     autoload :Resource
 
     autoload_under "adapters" do
+      autoload :ChewyAdapter
       autoload :SunspotAdapter
     end
   end
