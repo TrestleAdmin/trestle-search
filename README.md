@@ -44,6 +44,14 @@ end
 ```
 
 
+## Integration Examples
+
+1. [ActiveRecord (ILIKE)](https://github.com/TrestleAdmin/trestle-search/wiki/Integration-with-ActiveRecord-(ILIKE))
+2. [PgSearch](https://github.com/TrestleAdmin/trestle-search/wiki/Integration-with-PgSearch)
+3. [Chewy](https://github.com/TrestleAdmin/trestle-search/wiki/Integration-with-Chewy)
+4. [Sunspot](https://github.com/TrestleAdmin/trestle-search/wiki/Integration-with-Sunspot)
+
+
 ## License
 
 The gem is available as open source under the terms of the [LGPLv3 License](https://opensource.org/licenses/LGPL-3.0).
