@@ -18,7 +18,7 @@ To enable search capabilities within an admin resource, define a `search` block:
 ```ruby
 Trestle.resource(:articles) do
   search do |query|
-    if query.present?
+    if query
       Article.where("title ILIKE ?", "%#{query}%")
     else
       Article.all
@@ -38,7 +38,7 @@ Trestle.resource(:articles) do
   end
 
   search do |q|
-    q.present? ? collection.where("title ILIKE ?", "%#{q}%") : collection
+    q ? collection.where("title ILIKE ?", "%#{q}%") : collection
   end
 end
 ```

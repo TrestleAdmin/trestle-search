@@ -12,7 +12,7 @@ module Trestle
       end
 
       def search(query, params)
-        instance_exec(query, params, &@search)
+        instance_exec(query.presence, params, &@search)
       end
 
       def searchable?
