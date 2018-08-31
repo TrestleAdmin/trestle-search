@@ -1,8 +1,9 @@
 @import "trestle/support";
 
 .searchbox {
+  width: 100%;
   max-width: 30em;
-  flex-basis: 100%;
+  margin-right: auto;
 
   .input-group {
     background: white;
