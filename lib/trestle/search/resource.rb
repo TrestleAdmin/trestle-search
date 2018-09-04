@@ -1,22 +1,30 @@
 module Trestle
   module Search
     module Resource
-      attr_writer :search
+      extend ActiveSupport::Concern
 
-      def initialize_collection(params)
-        if searchable?
-          search(params[:q], params)
-        else
-          super(params)
+      included do
+        # Include custom #collection method on Resource instance
+        prepend Collection
+
+        # Include custom #collection method on Resource class
+        singleton_class.send(:prepend, Collection)
+      end
+
+      module Collection
+        def collection(params)
+          if searchable?
+            adapter.search(params[:q].presence, params)
+          else
+            adapter.collection(params)
+          end
         end
       end
 
-      def search(query, params)
-        instance_exec(query.presence, params, &@search)
-      end
-
-      def searchable?
-        @search
+      module ClassMethods
+        def searchable?
+          adapter.respond_to?(:search)
+        end
       end
     end
   end

@@ -4,7 +4,7 @@ module Trestle
       config.assets.precompile << "trestle/search.css"
 
       initializer :extensions do
-        Trestle::Resource.singleton_class.send(:prepend, Trestle::Search::Resource)
+        Trestle::Resource.send(:include, Trestle::Search::Resource)
         Trestle::Resource::Builder.send(:include, Trestle::Search::Builder)
         Trestle::Resource::Controller.send(:prepend, Trestle::Search::Controller)
       end
