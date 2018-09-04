@@ -16,7 +16,7 @@ module Trestle
           if searchable?
             adapter.search(params[:q].presence, params)
           else
-            adapter.collection(params)
+            super
           end
         end
       end
