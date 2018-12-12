@@ -1,0 +1,5 @@
+es:
+  admin:
+    search:
+      placeholder: "Buscar"
+      results: "Resultados de la búsqueda"
