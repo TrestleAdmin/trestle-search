@@ -14,10 +14,14 @@ module Trestle
       module Collection
         def collection(params)
           if searchable?
-            adapter.search(params[:q].presence, params)
+            search(params[:q].presence, params)
           else
             super
           end
+        end
+
+        def search(query, params={})
+          adapter.search(query, params)
         end
       end
 
