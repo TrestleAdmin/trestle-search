@@ -12,7 +12,7 @@ module Trestle
       end
 
       module Collection
-        def collection(params)
+        def collection(params={})
           if searchable?
             search(params[:q].presence, params)
           else
