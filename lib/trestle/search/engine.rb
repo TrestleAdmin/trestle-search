@@ -3,10 +3,13 @@ module Trestle
     class Engine < ::Rails::Engine
       config.assets.precompile << "trestle/search.css"
 
+      config.to_prepare do
+        Trestle::ResourceController.send(:prepend, Trestle::Search::Controller)
+      end
+
       initializer :extensions do
         Trestle::Resource.send(:include, Trestle::Search::Resource)
         Trestle::Resource::Builder.send(:include, Trestle::Search::Builder)
-        Trestle::Resource::Controller.send(:prepend, Trestle::Search::Controller)
       end
     end
   end
