@@ -1,4 +1,4 @@
-require "trestle/search/version"
+require_relative "search/version"
 
 require "trestle"
 
@@ -6,9 +6,9 @@ module Trestle
   module Search
     extend ActiveSupport::Autoload
 
-    autoload :Builder
-    autoload :Controller
-    autoload :Resource
+    require_relative "search/builder"
+    require_relative "search/controller"
+    require_relative "search/resource"
 
     autoload_under "adapters" do
       autoload :ChewyAdapter
@@ -17,4 +17,4 @@ module Trestle
   end
 end
 
-require "trestle/search/engine" if defined?(Rails)
+require_relative "search/engine" if defined?(Rails)
