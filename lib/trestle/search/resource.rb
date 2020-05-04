@@ -14,7 +14,8 @@ module Trestle
       module Collection
         def collection(params={})
           if searchable?
-            search(params[:q].presence, params)
+            query = params[:q].presence
+            search(query, params) || super
           else
             super
           end
