@@ -1,7 +1,12 @@
-.searchbox {
+.search-container {
   width: 100%;
   max-width: 30em;
-  margin-right: auto;
+
+  display: flex;
+}
+
+.searchbox {
+  flex: 1;
 
   .input-group {
     background: white;
@@ -12,19 +17,6 @@
   .input-group-text {
     background: transparent;
     border: 0;
-  }
-
-  .form-control {
-    padding-left: 0;
-
-    background: transparent;
-    box-shadow: none;
-
-    border: 0;
-
-    &::-webkit-search-cancel-button {
-      display: none;
-    }
   }
 
   .clear-search {
@@ -38,5 +30,23 @@
     &:hover, &:focus {
       color: #333;
     }
+  }
+}
+
+.search-field {
+  padding-left: 0;
+
+  background: transparent;
+  box-shadow: none;
+
+  border: 0;
+
+  &:focus {
+    background: none;
+    box-shadow: none;
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
   }
 }

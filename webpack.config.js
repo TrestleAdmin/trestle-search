@@ -1,14 +1,15 @@
 const path = require('path');
 
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
 module.exports = {
   entry: {
-    search: path.resolve(__dirname, 'frontend/index.scss')
+    search: path.resolve(__dirname, 'frontend/index.js')
   },
   output: {
+    filename: '[name].js',
     path: path.resolve(__dirname, 'app/assets/bundle/trestle')
   },
   optimization: {
@@ -23,11 +24,23 @@ module.exports = {
       }
     },
     minimizer: [
+      new TerserPlugin(),
       new OptimizeCSSAssetsPlugin({})
     ]
   },
+  externals: {
+    jquery: 'jQuery',
+    trestle: 'Trestle'
+  },
   module: {
     rules: [
+      {
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'babel-loader' }
+        ]
+      },
       {
         test: /\.s?[ac]ss$/,
         use: [
@@ -40,7 +53,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css'
     })

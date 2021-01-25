@@ -1,0 +1,42 @@
+.search-filters {
+  align-self: center;
+
+  margin-left: 0.5rem;
+  margin-right: auto;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.search-filters-popover {
+  background: #fafafa;
+
+  z-index: 960;
+  max-width: none;
+
+  .arrow {
+    width: 13px;
+  }
+
+  .popover-body {
+    padding: 1rem;
+    width: 17.5rem;
+  }
+
+  &.bs-popover-bottom {
+    margin-top: 0.75rem;
+
+    > .arrow {
+      &::before,
+      &::after {
+        border-left-width: 6.5px;
+        border-right-width: 6.5px;
+      }
+
+      &::after {
+        border-bottom-color: #fafafa;
+      }
+    }
+  }
+}

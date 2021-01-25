@@ -1,11 +1,10 @@
 Trestle.configure do |config|
-  config.persistent_params << :q
+  config.persistent_params << :q << :f
 
-  config.hook("stylesheets") do
-    stylesheet_link_tag "trestle/search"
-  end
+  config.hook(:javascripts) { javascript_include_tag("trestle/search") }
+  config.hook(:stylesheets) { stylesheet_link_tag("trestle/search") }
 
-  config.hook("resource.index.header", if: -> { admin.searchable? }) do
+  config.hook("resource.index.header") do
     render "trestle/search/search"
   end
 end
