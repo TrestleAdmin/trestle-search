@@ -23,7 +23,7 @@
     <div class="search-filters">
       <%= form_for admin.filters, as: :f, url: admin.path, method: :get, builder: Trestle::Form::Builder, html: { id: nil, class: nil } do |f| %>
         <% persistent_params.each do |k, v| %>
-          <%= hidden_field_tag k, v %>
+          <%= hidden_field_tag k, v unless k == "f" %>
         <% end %>
 
         <button type="button" class="btn <%= admin.filters.active(params).any? ? "btn-warning" : "btn-info" %>" data-toggle="search-filters"><%= icon("fa fa-filter") %></button>
