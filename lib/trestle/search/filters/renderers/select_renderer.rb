@@ -10,6 +10,7 @@ module Trestle
           filter.options.fetch(:choices)
         end
 
+      protected
         def options
           {
             selected: value,

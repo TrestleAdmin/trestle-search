@@ -33,6 +33,8 @@ module Trestle
           case options[:type]
           when :date
             DateRenderer
+          when :daterange
+            DateRangeRenderer
           when :select
             SelectRenderer
           when :text, :string

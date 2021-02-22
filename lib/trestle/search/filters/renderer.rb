@@ -22,7 +22,7 @@ module Trestle
           filter.options[:label]
         end
 
-      private
+      protected
         def options
           {
             value: value,
