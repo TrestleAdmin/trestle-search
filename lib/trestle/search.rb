@@ -12,6 +12,7 @@ module Trestle
     require_relative "search/resource"
 
     autoload_under "adapters" do
+      autoload :ActiveRecordAdapter
       autoload :ChewyAdapter
       autoload :SunspotAdapter
     end

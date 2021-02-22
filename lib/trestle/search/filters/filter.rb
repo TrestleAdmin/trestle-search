@@ -12,8 +12,7 @@ module Trestle
           if @block
             @block.call(collection, value, params)
           else
-            # TODO: Default behavior (exact match)
-            collection
+            @admin.filter_column(collection, name, value)
           end
         end
 

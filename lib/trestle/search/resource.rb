@@ -13,6 +13,10 @@ module Trestle
 
         # Include custom #collection method on Resource class
         singleton_class.send(:prepend, CollectionMethods)
+
+        # Adapter method for default filter blocks.
+        # See Trestle::Search::ActiveRecordAdapter for default implementation
+        adapter_method :filter_column
       end
 
       module SearchMethods
