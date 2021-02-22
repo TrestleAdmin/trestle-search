@@ -17,19 +17,26 @@ module Trestle
         end
 
         def render(builder, filter_params)
-          filter_params ||= {}
-          field_options = {
-            value: filter_params[name] || "",
-            label: options[:label]
-          }
+          renderer_class.new(builder, self, filter_params || {}).render
+        end
 
+      private
+        def renderer_class
+          if options[:renderer]
+            options[:renderer]
+          else
+            renderer_for(options[:type]) || TextRenderer
+          end
+        end
+
+        def renderer_for(type)
           case options[:type]
           when :date
-            builder.date_field name, field_options
+            DateRenderer
           when :select
-            builder.select name, options[:choices], field_options.merge(include_blank: true, selected: field_options[:value]), data: { allow_clear: true, placeholder: "" }
-          else
-            builder.text_field name, field_options
+            SelectRenderer
+          when :text, :string
+            TextRenderer
           end
         end
       end

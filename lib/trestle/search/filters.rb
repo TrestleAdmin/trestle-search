@@ -4,6 +4,7 @@ module Trestle
       require_relative "filters/block"
       require_relative "filters/definition"
       require_relative "filters/filter"
+      require_relative "filters/renderer"
 
       include Enumerable
 
