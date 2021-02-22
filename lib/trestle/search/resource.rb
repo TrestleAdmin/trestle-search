@@ -5,30 +5,58 @@ module Trestle
 
       included do
         # Include custom #collection method on Resource instance
-        prepend Collection
+        prepend CollectionMethods
+
+        # Include search and filter methods normally
+        include SearchMethods
+        include FilterMethods
 
         # Include custom #collection method on Resource class
-        singleton_class.send(:prepend, Collection)
+        singleton_class.send(:prepend, CollectionMethods)
       end
 
-      module Collection
-        def collection(params={})
+      module SearchMethods
+        def search(params={})
           if searchable?
             query = params[:q].presence
-            search(query, params) || super
+            adapter.search(query, params)
+          end
+        end
+      end
+
+      module FilterMethods
+        def filter(collection, params={})
+          if filterable? && params[:f].present?
+            filters.scope(collection, params)
           else
-            super
+            collection
           end
         end
 
-        def search(query, params={})
-          adapter.search(query, params)
+        def filters
+          @filters ||= Filters.new(self.class.filters, adapter)
+        end
+
+        def filterable?
+          filters.any?
+        end
+      end
+
+      module CollectionMethods
+        def collection(params={})
+          collection = search(params) || super
+          collection = filter(collection, params)
+          collection
         end
       end
 
       module ClassMethods
         def searchable?
           adapter.respond_to?(:search)
+        end
+
+        def filters
+          @filters ||= Filters::Definition.new
         end
       end
     end

@@ -19,13 +19,26 @@
     </div>
   <% end %>
 
-  <div class="search-filters">
-    <%= form_tag admin.path, method: :get do %>
-      <button type="button" class="btn btn-info" data-toggle="search-filters"><%= icon("fa fa-filter") %></button>
+  <% if admin.filterable? %>
+    <div class="search-filters">
+      <%= form_for admin.filters, as: :f, url: admin.path, method: :get, builder: Trestle::Form::Builder, html: { id: nil, class: nil } do |f| %>
+        <% persistent_params.each do |k, v| %>
+          <%= hidden_field_tag k, v %>
+        <% end %>
 
-      <script id="search-filters" type="text/html">
-        <input type="submit" class="btn btn-info btn-block" value="Filter">
-      </script>
-    <% end %>
-  </div>
+        <button type="button" class="btn <%= admin.filters.active(params).any? ? "btn-warning" : "btn-info" %>" data-toggle="search-filters"><%= icon("fa fa-filter") %></button>
+
+        <script id="search-filters" type="text/html">
+          <div>
+            <% admin.filters.each do |name, filter| %>
+              <%= filter.render(f, params[:f]) %>
+            <% end %>
+
+            <%= f.submit admin.t("search.filter", default: "Filter"), class: "btn btn-info btn-block" %>
+            <%= link_to admin.t("search.reset_filters", default: "Reset Filters"), persistent_params.except(:f), class: "btn btn-light btn-sm btn-block" if admin.filters.active(params).any? %>
+          </div>
+        </script>
+      <% end %>
+    </div>
+  <% end %>
 </div>

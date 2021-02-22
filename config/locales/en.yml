@@ -3,3 +3,5 @@ en:
     search:
       placeholder: "Search"
       results: "Search Results"
+      filter: "Filter"
+      reset_filters: "Reset Filters"

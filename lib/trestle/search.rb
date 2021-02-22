@@ -8,6 +8,7 @@ module Trestle
 
     require_relative "search/builder"
     require_relative "search/controller"
+    require_relative "search/filters"
     require_relative "search/resource"
 
     autoload_under "adapters" do
