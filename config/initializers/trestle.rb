@@ -4,7 +4,7 @@ Trestle.configure do |config|
   config.hook(:javascripts) { javascript_include_tag("trestle/search") }
   config.hook(:stylesheets) { stylesheet_link_tag("trestle/search") }
 
-  config.hook("resource.index.header") do
+  config.hook("resource.index.header", if: -> { admin.searchable? || admin.filterable? }) do
     render "trestle/search/search"
   end
 end
