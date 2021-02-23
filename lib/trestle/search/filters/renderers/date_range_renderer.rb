@@ -1,3 +1,5 @@
+require_relative "./date_renderer"
+
 module Trestle
   module Search
     class Filters
