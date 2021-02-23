@@ -18,20 +18,13 @@ module Trestle
           params[name] || ""
         end
 
-        def label
-          filter.options[:label]
-        end
-
-        def data
-          filter.options.fetch(:data) { {} }
-        end
-
       protected
+        def defaults
+          Trestle::Options.new(value: value)
+        end
+
         def options
-          {
-            value: value,
-            label: label
-          }
+          defaults.merge(filter.options.slice(:label, :class, :help, :data))
         end
       end
     end
