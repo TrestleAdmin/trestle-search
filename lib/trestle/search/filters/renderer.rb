@@ -22,6 +22,10 @@ module Trestle
           filter.options[:label]
         end
 
+        def data
+          filter.options.fetch(:data) { {} }
+        end
+
       protected
         def options
           {

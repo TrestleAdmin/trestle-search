@@ -3,11 +3,15 @@ module Trestle
     class Filters
       class SelectRenderer < Renderer
         def render
-          builder.select(name, choices, options, data: { allow_clear: true, placeholder: "" })
+          builder.select(name, choices, options, data: data)
         end
 
         def choices
           filter.options.fetch(:choices)
+        end
+
+        def data
+          { allow_clear: true, placeholder: "" }.merge(super)
         end
 
       protected
@@ -15,7 +19,7 @@ module Trestle
           {
             selected: value,
             label: label,
-            include_blank: true
+            include_blank: ""
           }
         end
       end
