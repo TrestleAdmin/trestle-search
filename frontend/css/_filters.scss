@@ -39,4 +39,10 @@
       }
     }
   }
+
+  @include media-breakpoint-up(sm) {
+    .form-text.floating {
+      margin: 0;
+    }
+  }
 }
