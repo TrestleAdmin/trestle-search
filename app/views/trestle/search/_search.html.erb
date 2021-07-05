@@ -1,9 +1,7 @@
 <div class="searchbox">
   <%= form_tag admin.path, method: :get do %>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><icon class="fa fa-search"></icon></span>
-      </div>
+      <span class="input-group-text"><icon class="fa fa-search"></icon></span>
       <%= link_to icon("fa fa-times"), admin.path, class: "clear-search" if params[:q].present? %>
       <%= search_field_tag :q, params[:q], class: "form-control", autocomplete: "off", placeholder: admin.t("search.placeholder", default: "Search") %>
     </div>
