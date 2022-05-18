@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
+  gem "rspec-rails", "~> 5.0"
   gem "capybara"
 end
 

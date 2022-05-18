@@ -24,5 +24,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "trestle", "~> 0.9.0", ">= 0.9.3"
 
-  spec.add_development_dependency "rspec-rails", "~> 3.0"
+  spec.add_development_dependency "rspec-rails"
 end
