@@ -12,8 +12,14 @@ module Trestle
 
     autoload_under "adapters" do
       autoload :ChewyAdapter
+      autoload :ElasticsearchAdapter
       autoload :SunspotAdapter
     end
+
+    autoload_under "query_builders" do
+      autoload :ElasticsearchQueryBuilder
+    end
+
   end
 end
 
