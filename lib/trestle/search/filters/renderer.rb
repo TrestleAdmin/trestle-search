@@ -5,6 +5,7 @@ module Trestle
         attr_reader :builder, :filter, :params
 
         delegate :name, to: :filter
+        delegate :concat, :content_tag, to: :template
 
         def initialize(builder, filter, params)
           @builder, @filter, @params = builder, filter, params
@@ -25,6 +26,10 @@ module Trestle
 
         def options
           defaults.merge(filter.options.slice(:label, :placeholder, :class, :help, :data))
+        end
+
+        def template
+          builder.instance_variable_get("@template")
         end
       end
     end

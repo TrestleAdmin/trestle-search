@@ -19,7 +19,7 @@ module Trestle
 
       def scope(collection, params)
         active(params).each do |filter, value|
-          collection = filter.scope(collection, value, params)
+          collection = filter.scope(collection, value, params) || collection
         end
 
         collection

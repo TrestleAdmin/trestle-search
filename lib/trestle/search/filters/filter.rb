@@ -37,6 +37,8 @@ module Trestle
             DateRangeRenderer
           when :select
             SelectRenderer
+          when :range
+            RangeRenderer
           when :text, :string
             TextRenderer
           end
