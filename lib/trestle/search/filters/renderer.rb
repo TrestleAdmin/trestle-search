@@ -24,7 +24,7 @@ module Trestle
         end
 
         def options
-          defaults.merge(filter.options.slice(:label, :class, :help, :data))
+          defaults.merge(filter.options.slice(:label, :placeholder, :class, :help, :data))
         end
       end
     end
