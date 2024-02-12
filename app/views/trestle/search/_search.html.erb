@@ -18,18 +18,16 @@
           <%= hidden_field_tag k, v unless k == "f" %>
         <% end %>
 
-        <button type="button" class="btn <%= admin.filters.active(params).any? ? "btn-warning" : "btn-info" %>" data-toggle="search-filters"><%= icon("fa fa-filter") %></button>
+        <button type="button" class="btn <%= admin.filters.active(params).any? ? "btn-warning" : "btn-info" %>" data-controller="search-filters"><%= icon("fa fa-filter") %></button>
 
-        <script id="search-filters" type="text/html">
-          <div>
-            <% admin.filters.each do |name, filter| %>
-              <%= filter.render(f, params[:f]) %>
-            <% end %>
+        <template id="search-filters" type="text/html">
+          <% admin.filters.each do |name, filter| %>
+            <%= filter.render(f, params[:f]) %>
+          <% end %>
 
-            <%= f.submit admin.t("search.filter", default: "Filter"), class: "btn btn-info btn-block" %>
-            <%= link_to admin.t("search.reset_filters", default: "Reset Filters"), persistent_params.except(:f), class: "btn btn-light btn-sm btn-block" if admin.filters.active(params).any? %>
-          </div>
-        </script>
+          <%= f.submit admin.t("search.filter", default: "Filter"), class: "btn btn-info w-100" %>
+          <%= link_to admin.t("search.reset_filters", default: "Reset Filters"), persistent_params.except(:f), class: "btn btn-light btn-sm w-100 mt-2" if admin.filters.active(params).any? %>
+        </template>
       <% end %>
     </div>
   <% end %>

@@ -6,13 +6,7 @@ module Trestle
       class DateRangeRenderer < DateRenderer
       protected
         def defaults
-          super.merge({
-            data: {
-              picker: true,
-              allow_clear: true,
-              mode: "range"
-            }
-          })
+          super.merge({ data: { mode: "range" } })
         end
       end
     end
