@@ -1,10 +1,11 @@
 const path = require('path');
 
-const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
+  mode: 'production',
   entry: {
     search: path.resolve(__dirname, 'frontend/index.js')
   },
@@ -13,19 +14,9 @@ module.exports = {
     path: path.resolve(__dirname, 'app/assets/bundle/trestle')
   },
   optimization: {
-    splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'bundle',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    },
     minimizer: [
       new TerserPlugin(),
-      new OptimizeCSSAssetsPlugin({})
+      new CssMinimizerPlugin()
     ]
   },
   externals: {
@@ -46,8 +37,24 @@ module.exports = {
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader' },
-          { loader: 'postcss-loader', options: { plugins: [ require('autoprefixer') ] } },
-          { loader: 'sass-loader' }
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  ['autoprefixer', {}]
+                ]
+              }
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                quietDeps: true
+              }
+            }
+          }
         ]
       }
     ]
