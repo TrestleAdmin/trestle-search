@@ -4,9 +4,11 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
+  gem "rspec-rails"
   gem "capybara"
 end
 
+gem "rails", "~> 7.1.0"
 gem "sqlite3", "~> 1.4"
 
 gem "trestle", github: "TrestleAdmin/trestle"
