@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
 group :test do
-  gem "coveralls", require: false
+  gem "rspec-rails", "~> 5.0"
+
+  gem "coveralls_reborn", require: false
 
   gem "capybara"
   gem "sqlite3", "~> 1.4"
