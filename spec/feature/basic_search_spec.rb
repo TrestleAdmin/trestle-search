@@ -53,9 +53,6 @@ feature "Basic search" do
 private
   def search_for(query)
     visit "/admin/continents"
-    fill_in "Search", with: query
-
-    form = page.find("#q").ancestor("form")
-    Capybara::RackTest::Form.new(page.driver, form.native).submit({})
+    fill_in "Search", with: "#{query}\n"
   end
 end
