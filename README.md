@@ -1,5 +1,9 @@
 # Trestle Search (trestle-search)
 
+[![RubyGem](https://img.shields.io/gem/v/trestle-search.svg?style=flat&colorB=4065a9)](https://rubygems.org/gems/trestle-search)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/TrestleAdmin/trestle-search/rspec.yml?style=flat)](https://github.com/TrestleAdmin/trestle-search/actions)
+[![Coveralls](https://img.shields.io/coveralls/TrestleAdmin/trestle-search.svg?style=flat)](https://coveralls.io/github/TrestleAdmin/trestle-search)
+
 > Search plugin for the Trestle admin framework
 
 
