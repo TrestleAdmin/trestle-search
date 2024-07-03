@@ -6,9 +6,10 @@ gemspec
 group :test do
   gem "rspec-rails"
   gem "capybara"
+  gem "sqlite3", "~> 1.4"
 end
 
 gem "rails", "~> 7.1.0"
-gem "sqlite3", "~> 1.4"
+gem "sprockets-rails"
 
 gem "trestle", github: "TrestleAdmin/trestle"
