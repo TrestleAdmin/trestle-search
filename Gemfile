@@ -5,7 +5,10 @@ gemspec
 
 group :test do
   gem "rspec-rails"
+
+  gem 'coveralls_reborn', require: false
   gem "capybara"
+
   gem "sqlite3", "~> 1.4"
 end
 
