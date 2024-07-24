@@ -1,5 +1,6 @@
 <div class="searchbox">
   <%= form_tag admin.path, method: :get do %>
+    <%= hidden_field_tag :scope, params[:scope]  if params[:scope] %>
     <div class="input-group">
       <span class="input-group-text"><icon class="fa fa-search"></icon></span>
       <%= link_to icon("fa fa-times"), admin.path, class: "clear-search" if params[:q].present? %>
