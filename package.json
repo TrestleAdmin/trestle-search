@@ -1,6 +1,6 @@
 {
   "name": "trestle-search",
-  "version": "0.5.0.pre",
+  "version": "0.5.0-filters",
   "description": "Search plugin for the Trestle admin framework",
   "main": "frontend/index.js",
   "repository": "https://github.com/TrestleAdmin/trestle-search.git",

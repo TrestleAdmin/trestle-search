@@ -5,7 +5,7 @@ group :test do
 
   gem "coveralls_reborn", require: false
 
-  gem "capybara"
+  gem "capybara", ">= 3.39.0"
   gem "sqlite3", "~> 1.4"
 end
 
