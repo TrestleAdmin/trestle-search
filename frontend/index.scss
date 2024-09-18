@@ -1,3 +1,5 @@
+@import "~trestle/frontend/css/support";
+
 .searchbox {
   width: 100%;
   max-width: 30em;
@@ -27,16 +29,14 @@
     }
   }
 
-  .clear-search {
-    position: absolute;
-    right: 0.75rem;
-    z-index: 5;
-    color: #555;
-    font-size: 1.2rem;
-    padding: 0.35rem;
+  .btn-clear-search {
+    --bs-btn-padding-y: 0;
+    --bs-btn-font-size: 1.325rem;
+    --bs-btn-color: #555;
+    --bs-btn-hover-color: #333;
 
-    &:hover, &:focus {
-      color: #333;
+    @include media-breakpoint-up(sm) {
+      --bs-btn-font-size: 1.25rem;
     }
   }
 }
