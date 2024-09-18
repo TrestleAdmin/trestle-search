@@ -1,3 +1,5 @@
+@import "~trestle/frontend/css/support";
+
 .search-container {
   width: 100%;
   max-width: 30em;
@@ -19,34 +21,27 @@
     border: 0;
   }
 
-  .clear-search {
-    position: absolute;
-    right: 0.25rem;
-    z-index: 5;
-    color: #555;
-    font-size: 1.2rem;
-    padding: 0.25rem 0.5rem;
+  .form-control {
+    padding-left: 0;
 
-    &:hover, &:focus {
-      color: #333;
+    background: transparent;
+    box-shadow: none;
+
+    border: 0;
+
+    &::-webkit-search-cancel-button {
+      display: none;
     }
   }
-}
 
-.search-field {
-  padding-left: 0;
+  .btn-clear-search {
+    --bs-btn-padding-y: 0;
+    --bs-btn-font-size: 1.325rem;
+    --bs-btn-color: #555;
+    --bs-btn-hover-color: #333;
 
-  background: transparent;
-  box-shadow: none;
-
-  border: 0;
-
-  &:focus {
-    background: none;
-    box-shadow: none;
-  }
-
-  &::-webkit-search-cancel-button {
-    display: none;
+    @include media-breakpoint-up(sm) {
+      --bs-btn-font-size: 1.25rem;
+    }
   }
 }
