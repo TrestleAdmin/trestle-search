@@ -1,5 +1,5 @@
 <div class="searchbox">
-  <%= form_tag admin.path, method: :get do %>
+  <%= form_tag admin.path, method: :get, data: { turbo_frame: "main" } do %>
     <div class="input-group">
       <%= label_tag :q, icon("fas fa-search"), class: "input-group-text" %>
 
