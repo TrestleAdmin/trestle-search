@@ -1,11 +1,13 @@
 <div class="searchbox">
   <%= form_tag admin.path, method: :get, data: { turbo_frame: "main" } do %>
+    <%= serialize_persistent_params except: :q %>
+
     <div class="input-group">
       <%= label_tag :q, icon("fas fa-search"), class: "input-group-text" %>
 
       <%= search_field_tag :q, params[:q], class: "form-control", autocomplete: "off", placeholder: admin.t("search.placeholder", default: "Search") %>
 
-      <%= link_to icon("fas fa-times"), admin.path, class: "btn btn-clear-search", data: { turbo_frame: "main" } if params[:q].present? %>
+      <%= link_to icon("fas fa-times"), admin.path(nil, persistent_params.except(:q)), class: "btn btn-clear-search", data: { turbo_frame: "main" } if params[:q].present? %>
     </div>
   <% end %>
 </div>
