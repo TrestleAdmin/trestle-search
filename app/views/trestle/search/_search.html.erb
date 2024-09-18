@@ -1,13 +1,13 @@
 <div class="search-container">
   <% if admin.searchable? %>
     <div class="searchbox">
-      <%= form_tag admin.path, method: :get do %>
+      <%= form_tag admin.path, method: :get, data: { turbo_frame: "main" } do %>
         <div class="input-group">
           <%= label_tag :q, icon("fas fa-search"), class: "input-group-text" %>
 
           <%= search_field_tag :q, params[:q], class: "form-control", autocomplete: "off", placeholder: admin.t("search.placeholder", default: "Search") %>
 
-          <%= link_to icon("fas fa-times"), admin.path, class: "btn btn-clear-search" if params[:q].present? %>
+          <%= link_to icon("fas fa-times"), admin.path, class: "btn btn-clear-search", data: { turbo_frame: "main" } if params[:q].present? %>
         </div>
       <% end %>
     </div>
@@ -15,7 +15,7 @@
 
   <% if admin.filterable? %>
     <div class="search-filters">
-      <%= form_for admin.filters, as: :f, url: admin.path, method: :get, builder: Trestle::Form::Builder, html: { id: nil, class: nil } do |f| %>
+      <%= form_for admin.filters, as: :f, url: admin.path, method: :get, builder: Trestle::Form::Builder, html: { id: nil, class: nil, data: { turbo_frame: "main" } } do |f| %>
         <% persistent_params.each do |k, v| %>
           <%= hidden_field_tag k, v unless k == "f" %>
         <% end %>
@@ -28,7 +28,10 @@
           <% end %>
 
           <%= f.submit admin.t("search.filter", default: "Filter"), class: "btn btn-info w-100" %>
-          <%= link_to admin.t("search.reset_filters", default: "Reset Filters"), persistent_params.except(:f), class: "btn btn-light btn-sm w-100 mt-2" if admin.filters.active(params).any? %>
+
+          <% if admin.filters.active(params).any? %>
+            <%= link_to admin.t("search.reset_filters", default: "Reset Filters"), persistent_params.except(:f), class: "btn btn-light btn-sm w-100 mt-2", data: { turbo_frame: "main" } %>
+          <% end %>
         </template>
       <% end %>
     </div>
