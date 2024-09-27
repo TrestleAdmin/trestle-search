@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/TrestleAdmin/trestle-search"
 
-  spec.add_dependency "trestle", "~> 0.10.0"
+  spec.add_dependency "trestle", "~> 0.10.1"
 
   spec.add_development_dependency "rspec-rails"
 end
