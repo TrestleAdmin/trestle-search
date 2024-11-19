@@ -16,7 +16,7 @@ module Trestle
         end
 
         def value
-          params[name] || ""
+          params[name] || filter.options.fetch(:default, "")
         end
 
       protected
