@@ -26,14 +26,13 @@ module Trestle
       end
 
       def active(params)
-        filter_params = params[:f]
+        filter_params = params[:f] || {}
 
         Enumerator.new do |yielder|
           each do |name, filter|
-            if value = filter_params[name].presence
-              yielder << [filter, value]
-            end
-          end if filter_params.present?
+            value = filter_params[name].presence || filter.options[:default].presence
+            yielder << [filter, value] if value
+          end
         end
       end
     end
