@@ -17,7 +17,7 @@
 
   <% if admin.filterable? %>
     <div class="search-filters">
-      <%= form_for admin.filters, as: :f, url: admin.path, method: :get, builder: Trestle::Form::Builder, html: { id: nil, class: nil, data: { turbo_frame: "main" } } do |f| %>
+      <%= form_with scope: :f, url: admin.path, method: :get, builder: Trestle::Form::Builder, id: nil, class: nil, data: { turbo_frame: "main" } do |f| %>
         <%= serialize_persistent_params except: :f %>
 
         <button type="button" class="btn <%= admin.filters.active(params).any? ? "btn-warning" : "btn-info" %>" data-controller="search-filters"><%= icon("fa fa-filter") %></button>
